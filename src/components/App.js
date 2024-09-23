@@ -23,7 +23,7 @@ const App = () => {
   }, []);
   return (
     <div id="main">
-      <h1>Data fetch</h1>
+      <h1>Data Fetched from API</h1>
       {data.length > 0 ? (
         data.map((item) => <pre key={item.id}>{item.title}</pre>)
       ) : (
