@@ -7,15 +7,24 @@ const App = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch("https://dummyjson.com/products");
-      const resData = await response.json();
-      console.log(resData);
-
-      setData(resData);
+      try {
+        const response = await fetch("https://dummyjson.com/products");
+        const resData = await response.json();
+        console.log(resData);
+        setData(resData.products);
+      } catch (err) {
+        console.log("Oops!!..There was an error : ", err);
+      }
     };
     getData();
   }, []);
-  return <div id="main"></div>;
+  return (
+    <div id="main">
+      <h1>Data fetch</h1>
+      {data.length > 0 &&
+        data.map((item) => <pre key={item.id}>{item.title}</pre>)}
+    </div>
+  );
 };
 
 export default App;
