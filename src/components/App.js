@@ -26,7 +26,7 @@ const App = () => {
       <h1>Data Fetched from API</h1>
 
       {error ? (
-        <h2>An error occurred: {err}</h2>
+        <h2>An error occurred: {error}</h2>
       ) : data ? (
         <pre>{JSON.stringify(data, null, 2)}</pre>
       ) : (
