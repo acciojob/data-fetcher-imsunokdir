@@ -4,6 +4,7 @@ import "./../styles/App.css";
 
 const App = () => {
   const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -12,7 +13,9 @@ const App = () => {
         const resData = await response.json();
         console.log(resData);
         setData(resData.products);
+        setError(null);
       } catch (err) {
+        setError(err);
         console.log("Oops!!..There was an error : ", err);
       }
     };
@@ -21,8 +24,9 @@ const App = () => {
   return (
     <div id="main">
       <h1>Data fetch</h1>
-      {data.length > 0 &&
-        data.map((item) => <pre key={item.id}>{item.title}</pre>)}
+      {data.length > 0
+        ? data.map((item) => <pre key={item.id}>{item.title}</pre>)
+        : error && <h2>An error occurred: {error}</h2>}
     </div>
   );
 };
