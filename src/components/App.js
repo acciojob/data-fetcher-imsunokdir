@@ -1,13 +1,21 @@
+import React, { useEffect, useState } from "react";
 
-import React from "react";
-import './../styles/App.css';
+import "./../styles/App.css";
 
 const App = () => {
-  return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
-}
+  const [data, setData] = useState([]);
 
-export default App
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch("https://dummyjson.com/products");
+      const resData = await response.json();
+      console.log(resData);
+
+      setData(resData);
+    };
+    getData();
+  }, []);
+  return <div id="main"></div>;
+};
+
+export default App;
