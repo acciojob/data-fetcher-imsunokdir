@@ -24,9 +24,12 @@ const App = () => {
   return (
     <div id="main">
       <h1>Data fetch</h1>
-      {data.length > 0
-        ? data.map((item) => <pre key={item.id}>{item.title}</pre>)
-        : error && <h2>An error occurred: {error}</h2>}
+      {data.length > 0 ? (
+        data.map((item) => <pre key={item.id}>{item.title}</pre>)
+      ) : (
+        <h3>No data found</h3>
+      )}
+      {error && <h2>An error occurred: {error}</h2>}
     </div>
   );
 };
