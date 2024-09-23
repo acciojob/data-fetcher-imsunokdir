@@ -24,12 +24,14 @@ const App = () => {
   return (
     <div id="main">
       <h1>Data Fetched from API</h1>
-      {data ? (
+
+      {error ? (
+        <h2>An error occurred</h2>
+      ) : data ? (
         <pre>{JSON.stringify(data, null, 2)}</pre>
       ) : (
         <h3>No data found</h3>
       )}
-      {error && <h2>An error occurred: {error}</h2>}
     </div>
   );
 };
